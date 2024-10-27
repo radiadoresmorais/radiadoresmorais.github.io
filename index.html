@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<base href="https://radiadoresmorais.github.io"><meta charset="UTF-8">
+<head>
+  <base href="https://radiadoresmorais.github.io"><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Radiadores Morais - Especialistas em radiadores automotivos, venda de peças e serviços em São José dos Campos. Carros novos e seminovos.">
 <meta name="keywords" content="radiadores, radiador automotivo, carros, peças automotivas, São José dos Campos">
@@ -50,51 +51,66 @@ html {
 
 body {
   background: var(--white);
+  padding-top: 60px;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
 
 header {
   background: var(--white);
-  padding: 1rem;
+  padding: 0.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 100;
+  display: flex;
+  justify-content: center;
+  height: 60px;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .logo {
-  width: 200px;
-  height: 60px;
-  background: var(--primary);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-weight: bold;
   font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logo img {
+  height: 32px;
+  width: auto;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .nav-links a {
   color: var(--dark);
   text-decoration: none;
   font-weight: 500;
+  font-size: 0.9rem;
   transition: color 0.3s;
 }
 
@@ -139,16 +155,17 @@ nav {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 450px;
   padding: 1.5rem;
   border: 1px solid var(--light);
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .part-card:hover, .car-card:hover {
-  border-color: var(--primary);
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .part-card .price,
@@ -159,9 +176,39 @@ nav {
   margin: 1rem 0;
 }
 
-.whatsapp-button {
-  margin-top: auto;
+
+.part-card {
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.part-card .whatsapp-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 1rem;
   justify-content: center;
+}
+
+
+.whatsapp-button {
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.whatsapp-button:hover {
+  background: #1DAF61;
 }
 
 .section-divider {
@@ -259,6 +306,18 @@ footer {
   .car-card {
     min-height: auto;
   }
+
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  font-size: 1rem;
+}
+
+.logo img {
+  height: 24px;
+}
 }
 
 .message {
@@ -389,6 +448,9 @@ section {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin: 1rem 0;
+  padding: 1rem;
+  background: var(--light);
+  border-radius: 8px;
 }
 
 .car-spec {
@@ -396,20 +458,80 @@ section {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: var(--gray);
+  color: var(--dark);
 }
 
-.part-specs {
+.car-spec i {
+  color: var(--primary);
+}
+
+.part-details {
   margin: 1rem 0;
   font-size: 0.9rem;
   color: var(--gray);
+  line-height: 1.5;
 }
 
-.part-spec {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.part-features {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--light);
+  border-radius: 8px;
+}
+
+.part-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.part-features li {
   margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.part-features li:before {
+  content: "✓";
+  color: var(--primary);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: var(--primary);
 }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -436,25 +558,26 @@ section {
 </script>
 </head><body>
 
-<header>
-  <nav>
-    <div class="logo-container">
-      <div class="logo">Radiadores Morais</div>
-    </div>
-    <div class="nav-links">
-      <a href="#inicio">Início</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#pecas">Peças</a>
-      <a href="#carros">Carros</a>
-      <a href="#seminovos">Seminovos</a>
-      <a href="#contato">Contato</a>
-      <a href="https://wa.me/5512997821218" class="whatsapp-button">
-        <i class="fab fa-whatsapp"></i> Agendar
-      </a>
-    </div>
-    <div class="menu-toggle">☰</div>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="logo.png" alt="Radiadores Morais Logo" width="40" height="40">
+        <span class="logo">Radiadores Morais</span>
+      </div>
+      <div class="nav-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#pecas">Peças</a>
+        <a href="#carros">Carros</a>
+        <a href="#seminovos">Seminovos</a>
+        <a href="#contato">Contato</a>
+        <a href="https://wa.me/5512997821218" class="whatsapp-button">
+          <i class="fab fa-whatsapp"></i> Agendar
+        </a>
+      </div>
+      <div class="menu-toggle">☰</div>
+    </nav>
+  </header>
 
 <main class="main-content">
   <section id="inicio">
@@ -467,239 +590,418 @@ section {
 
   <section id="pecas">
     <div class="section-header">
-      <h2>Peças para Radiadores</h2>
-      <p>Oferecemos peças originais com garantia de qualidade para seu veículo.</p>
+        <h2>Peças para Veículos</h2>
+        <p>Oferecemos peças de alta qualidade e durabilidade para seu veículo.</p>
     </div>
     <div class="parts-grid">
-      <div class="part-card">
-        <div class="part-image">
-          <svg width="100" height="100" viewBox="0 0 100 100">
-            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
-            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
-          </svg>
+        <div class="part-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Filtro de Óleo Premium</h3>
+            <div class="part-details">
+                Filtro de óleo de alta eficiência, garante a proteção do motor.
+            </div>
+            <div class="part-features">
+                <ul>
+                    <li>Durabilidade superior</li>
+                    <li>Compatível com vários modelos</li>
+                    <li>Instalação fácil</li>
+                </ul>
+            </div>
+            <p class="price">R$ 79,90</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <h3>Radiador Universal</h3>
-        <p>Compatível com diversos modelos. Alta eficiência de resfriamento.</p>
-        <p class="price">R$ 599,90</p>
-        <div class="part-specs">
-          <div class="part-spec">
-            <i class="fas fa-check"></i> Garantia de 1 ano
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-wrench"></i> Instalação inclusa
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-car"></i> Compatibilidade universal
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-certificate"></i> Produto original
-          </div>
-        </div>
-        <button class="whatsapp-button">
-          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
-        </button>
-      </div>
 
-      <div class="part-card">
-        <div class="part-image">
-          <svg width="100" height="100" viewBox="0 0 100 100">
-            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
-            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
-          </svg>
+        <div class="part-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <circle cx="50" cy="50" r="30" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <circle cx="50" cy="50" r="30" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <circle cx="50" cy="50" r="30" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Bateria de Carro 60Ah</h3>
+            <div class="part-details">
+                Bateria de alta performance, ideal para veículos que exigem potência.
+            </div>
+            <div class="part-features">
+                <ul>
+                    <li>Garantia de 1 ano</li>
+                    <li>Resistência a altas temperaturas</li>
+                    <li>Manutenção livre</li>
+                </ul>
+            </div>
+            <p class="price">R$ 349,90</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <h3>Radiador Alumínio Premium</h3>
-        <p>Alta performance para carros esportivos. Maior dissipação térmica.</p>
-        <p class="price">R$ 1.299,90</p>
-        <div class="part-specs">
-          <div class="part-spec">
-            <i class="fas fa-check"></i> Garantia de 1 ano
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-wrench"></i> Instalação inclusa
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-car"></i> Compatibilidade universal
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-certificate"></i> Produto original
-          </div>
-        </div>
-        <button class="whatsapp-button" data-product="Radiador Alumínio Premium">
-          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
-        </button>
-      </div>
 
-      <div class="part-card">
-        <div class="part-image">
-          <svg width="100" height="100" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="30" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
-            <circle cx="50" cy="50" r="20" fill="none" stroke="#2E7D32" stroke-width="2"/>
-          </svg>
+        <div class="part-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <path d="M10,20 L190,20 L190,180 L10,180 Z" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <path d="M10,20 L190,20 L190,180 L10,180 Z" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <path d="M10,20 L190,20 L190,180 L10,180 Z" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Kit de Pastilhas de Freio</h3>
+            <div class="part-details">
+                Pastilhas de freio de alta performance para segurança garantida.
+            </div>
+            <div class="part-features">
+                <ul>
+                    <li>Longa durabilidade</li>
+                    <li>Redução de ruídos</li>
+                    <li>Compatível com vários modelos</li>
+                </ul>
+            </div>
+            <p class="price">R$ 159,90</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <h3>Tampa de Pressão Universal</h3>
-        <p>Compatível com diversos modelos. Sistema de segurança reforçado.</p>
-        <p class="price">R$ 89,90</p>
-        <div class="part-specs">
-          <div class="part-spec">
-            <i class="fas fa-check"></i> Garantia de 1 ano
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-wrench"></i> Instalação inclusa
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-car"></i> Compatibilidade universal
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-certificate"></i> Produto original
-          </div>
-        </div>
-        <button class="whatsapp-button" data-product="Tampa de Pressão Universal">
-          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
-        </button>
-      </div>
 
-      <div class="part-card">
-        <div class="part-image">
-          <svg width="100" height="100" viewBox="0 0 100 100">
-            <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
-          </svg>
+        <div class="part-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <polygon points="10,20 10,180 190,180 190,20" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <polygon points="10,20 10,180 190,180 190,20" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <polygon points="10,20 10,180 190,180 190,20" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Amortecedor Traseiro</h3>
+            <div class="part-details">
+                Amortecedor de alta resistência, ideal para estradas irregulares.
+            </div>
+            <div class="part-features">
+                <ul>
+                    <li>Melhor desempenho em curvas</li>
+                    <li>Instalação simples</li>
+                </ul>
+            </div>
+            <p class="price">R$ 299,90</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <h3>Mangueira de Silicone Premium</h3>
-        <p>Resistente a altas temperaturas. Kit completo com abraçadeiras.</p>
-        <p class="price">R$ 159,90</p>
-        <div class="part-specs">
-          <div class="part-spec">
-            <i class="fas fa-check"></i> Garantia de 1 ano
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-wrench"></i> Instalação inclusa
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-car"></i> Compatibilidade universal
-          </div>
-          <div class="part-spec">
-            <i class="fas fa-certificate"></i> Produto original
-          </div>
+
+        <div class="part-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <ellipse cx="100" cy="100" rx="80" ry="40" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <ellipse cx="100" cy="100" rx="80" ry="40" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <ellipse cx="100" cy="100" rx="80" ry="40" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Suspensão Dianteira</h3>
+            <div class="part-details">
+                Sistema de suspensão projetado para conforto e segurança.
+            </div>
+            <div class="part-features">
+                <ul>
+                    <li>Alta durabilidade</li>
+                    <li>Melhora o conforto de condução</li>
+                </ul>
+            </div>
+            <p class="price">R$ 399,90</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <button class="whatsapp-button" data-product="Mangueira de Silicone Premium">
-          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
-        </button>
-      </div>
+
+        <div class="part-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <polygon points="10,20 10,180 190,180 190,20" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <polygon points="10,20 10,180 190,180 190,20" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                            <polygon points="10,20 10,180 190,180 190,20" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Correia Dentada</h3>
+            <div class="part-details">
+                Correia dentada de alta qualidade, essencial para o funcionamento do motor.
+            </div>
+            <div class="part-features">
+                <ul>
+                    <li>Alta resistência</li>
+                    <li>Instalação fácil</li>
+                    <li>Durabilidade garantida</li>
+                </ul>
+            </div>
+            <p class="price">R$ 89,90</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
+        </div>
     </div>
-  </section>
+</section>
 
-  <div class="section-divider"></div>
-
-  <section id="carros" class="car-section">
+<section id="carros-novos">
     <div class="section-header">
-      <h2>Carros Novos</h2>
-      <p>Os melhores veículos zero quilômetro com garantia de fábrica.</p>
+        <h2>Carros Novos</h2>
+        <p>Confira nossos modelos de carros novos à venda.</p>
     </div>
     <div class="car-grid">
-      <div class="car-card">
-        <div class="car-image">
-          <svg width="200" height="120" viewBox="0 0 200 120">
-            <path d="M40,80 L60,80 L70,60 L130,60 L140,80 L160,80 L160,90 L40,90 Z" fill="#2E7D32"/>
-            <circle cx="70" cy="90" r="15" fill="#757575"/>
-            <circle cx="130" cy="90" r="15" fill="#757575"/>
-          </svg>
+        <div class="car-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="carro1.jpg" alt="Carro Novo 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro1_2.jpg" alt="Carro Novo 1 - lado">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro1_3.jpg" alt="Carro Novo 1 - interior">
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Modelo A - 2024</h3>
+            <div class="car-details">
+                Carro novo com tecnologia de ponta e design moderno.
+            </div>
+            <p class="price">R$ 79.990,00</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <div class="car-details">
-          <h3>Honda Civic 2024</h3>
-          <p>Touring 2.0 Turbo</p>
-          <div class="car-price">R$ 189.900</div>
-          <div class="car-specs">
-            <span class="car-spec">
-              <i class="fas fa-car"></i> 0km
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-gas-pump"></i> Flex
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-cog"></i> Automático
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-paint-brush"></i> Preto
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-horse"></i> 173 cv
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-car-battery"></i> Garantia 3 anos
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-shield-alt"></i> IPVA 2024
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-star"></i> 0km
-            </span>
-          </div>
-          <button class="whatsapp-button" data-product="Honda Civic 2024 Touring">
-            <i class="fab fa-whatsapp"></i> Mais informações
-          </button>
-        </div>
-      </div>
-      
-      <!-- Similar cards for other new cars -->
-    </div>
-  </section>
 
-  <div class="section-divider"></div>
+        <div class="car-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="carro2.jpg" alt="Carro Novo 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro2_2.jpg" alt="Carro Novo 2 - lado">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro2_3.jpg" alt="Carro Novo 2 - interior">
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Modelo B - 2024</h3>
+            <div class="car-details">
+                Carro novo com eficiência energética e segurança avançada.
+            </div>
+            <p class="price">R$ 89.990,00</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
+        </div>
 
-  <section id="seminovos" class="car-section">
-    <div class="section-header">
-      <h2>Carros Seminovos</h2>
-      <p>Veículos seminovos revisados e com garantia.</p>
-    </div>
-    
-    <div class="car-grid">
-      <div class="car-card">
-        <div class="car-image">
-          <svg width="200" height="120" viewBox="0 0 200 120">
-            <path d="M40,80 L60,80 L70,60 L130,60 L140,80 L160,80 L160,90 L40,90 Z" fill="#4CAF50"/>
-            <circle cx="70" cy="90" r="15" fill="#757575"/>
-            <circle cx="130" cy="90" r="15" fill="#757575"/>
-          </svg>
+        <div class="car-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="carro3.jpg" alt="Carro Novo 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro3_2.jpg" alt="Carro Novo 3 - lado">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro3_3.jpg" alt="Carro Novo 3 - interior">
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Modelo C - 2024</h3>
+            <div class="car-details">
+                Carro novo esportivo, ideal para quem busca emoção ao dirigir.
+            </div>
+            <p class="price">R$ 129.990,00</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-        <div class="car-details">
-          <h3>Toyota Corolla 2022</h3>
-          <p>XEi 2.0 Flex</p>
-          <div class="car-price">R$ 129.900</div>
-          <div class="car-specs">
-            <span class="car-spec">
-              <i class="fas fa-road"></i> 35.000 km
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-gas-pump"></i> Flex
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-cog"></i> Automático
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-paint-brush"></i> Prata
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-horse"></i> 147 cv
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-car-battery"></i> Garantia 3 anos
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-shield-alt"></i> IPVA 2023
-            </span>
-            <span class="car-spec">
-              <i class="fas fa-star"></i> 35.000 km
-            </span>
-          </div>
-          <button class="whatsapp-button" data-product="Toyota Corolla 2022 XEi">
-            <i class="fab fa-whatsapp"></i> Mais informações
-          </button>
+
+        <div class="car-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="carro4.jpg" alt="Carro Novo 4">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro4_2.jpg" alt="Carro Novo 4 - lado">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro4_3.jpg" alt="Carro Novo 4 - interior">
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Modelo D - 2024</h3>
+            <div class="car-details">
+                Carro novo com tecnologia híbrida, para quem busca economia.
+            </div>
+            <p class="price">R$ 109.990,00</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
         </div>
-      </div>
-      
-      <!-- Similar cards for other used cars -->
+
+        <div class="car-card">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="carro5.jpg" alt="Carro Novo 5">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro5_2.jpg" alt="Carro Novo 5 - lado">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carro5_3.jpg" alt="Carro Novo 5 - interior">
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <h3>Modelo E - 2024</h3>
+            <div class="car-details">
+                Carro novo luxuoso, ideal para quem busca conforto e status.
+            </div>
+            <p class="price">R$ 149.990,00</p>
+            <button class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+            </button>
+        </div>
     </div>
-  </section>
+</section>
+
 
   <div class="chatbot">
     <div class="chatbot-header">
@@ -727,24 +1029,50 @@ section {
     <div class="contact-info">
       <h3>Contato</h3>
       <p>Tel: (12) 99782-1218</p>
-      <p>Email: contato@radiadoresmorais.com</p>
+      <p>Email: radiadoresmorais1@gmail.com</p>
     </div>
     <div class="address">
       <h3>Endereço</h3>
-      <p>Rua Exemplo, 123 - São José dos Campos, SP</p>
+      <p>Zona Norte - São José dos Campos, SP</p>
       <p>Segunda a Sexta: 8h às 18h</p>
       <p>Sábado: 8h às 12h</p>
-    </div>
-    <div class="legal">
-      <h3>Legal</h3>
-      <a href="/privacidade">Política de Privacidade</a>
-      <a href="/termos">Termos de Serviço</a>
     </div>
   </div>
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  function initCarousels() {
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const slides = carousel.querySelector('.carousel-slides');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      let currentSlide = 0;
+      
+      // Auto-advance slides every 3 seconds
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % dots.length;
+        updateCarousel();
+      }, 3000);
+      
+      // Click handlers for dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          updateCarousel();
+        });
+      });
+      
+      function updateCarousel() {
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentSlide);
+        });
+      }
+    });
+  }
+  
+  initCarousels();
+  
   const chatbot = {
     currentState: 'initial',
     conversation: {},
@@ -817,25 +1145,19 @@ document.addEventListener('DOMContentLoaded', function() {
         next: 'confirmar'
       },
       confirmar: {
-        message: 'Obrigado! Clique abaixo para finalizar seu atendimento no WhatsApp:',
+        message: 'Obrigado! Clique abaixo para continuar no WhatsApp ou posso ajudar com mais alguma coisa?',
         options: [
-          {text: 'Finalizar no WhatsApp', next: 'whatsapp'},
-          {text: 'Nova consulta', next: 'initial'},
-          {text: 'Encerrar', next: 'encerrar'}
+          {text: 'Continuar no WhatsApp', next: 'encerrar_whatsapp'},
+          {text: 'Tenho outra dúvida', next: 'initial'},
+          {text: 'Finalizar conversa', next: 'encerrar'}
         ]
       },
-      whatsapp: {
+      encerrar_whatsapp: {
         message: 'Redirecionando para o WhatsApp...',
-        action: function(conversation) {
-          const message = encodeURIComponent(
-            `Olá! Vim pelo chat do site.\n` +
-            `Nome: ${conversation.finalizar}\n` +
-            `Telefone: ${conversation.contato}\n` +
-            `Assunto: ${conversation.tipo_servico || conversation.pecas || conversation.carros}`
-          );
-          window.open(`https://wa.me/5512997821218?text=${message}`, '_blank');
-          return 'encerrar';
-        }
+        action: 'whatsapp'
+      },
+      encerrar: {
+        message: 'Obrigado pelo contato! Tenha um ótimo dia.'
       },
       modelo_peca: {
         message: 'Para qual modelo de veículo você precisa?',
@@ -916,11 +1238,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const currentStateData = this.responses[this.currentState];
       if (currentStateData && currentStateData.next) {
         this.conversation[this.currentState] = message;
-        if (currentStateData.action) {
-          const nextState = currentStateData.action(this.conversation);
-          this.currentState = nextState;
+        this.currentState = currentStateData.next;
+
+        if (currentStateData.action === 'whatsapp') {
+          const whatsappMsg = encodeURIComponent(`Olá! ${this.conversation['finalizar']} - Tel: ${this.conversation['contato']}\n\nInteresse em: ${this.conversation['orcamento'] || this.conversation['pecas'] || this.conversation['carros']}`);
+          window.open(`https://wa.me/5512997821218?text=${whatsappMsg}`, '_blank');
         } else {
-          this.currentState = currentStateData.next;
           this.showState(this.currentState);
         }
       }
@@ -992,5 +1315,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-</body>
-</html>
+</body></html>
