@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<base href="https://radiadoresmorais.github.io"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Radiadores Morais - Especialistas em radiadores automotivos, venda de peças e serviços em São José dos Campos. Carros novos e seminovos.">
+<meta name="keywords" content="radiadores, radiador automotivo, carros, peças automotivas, São José dos Campos">
+<meta name="author" content="Radiadores Morais">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://radiadoresmorais.github.io/">
+<meta property="og:title" content="Radiadores Morais - Peças e Serviços">
+<meta property="og:description" content="Especialistas em radiadores automotivos, venda de peças e serviços em São José dos Campos. Carros novos e seminovos.">
+<meta property="og:image" content="https://radiadoresmorais.github.io/img/social-preview.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://radiadoresmorais.github.io/">
+<meta property="twitter:title" content="Radiadores Morais - Peças e Serviços">
+<meta property="twitter:description" content="Especialistas em radiadores automotivos, venda de peças e serviços em São José dos Campos. Carros novos e seminovos.">
+<meta property="twitter:image" content="https://radiadoresmorais.github.io/img/social-preview.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<title>Radiadores Morais - Peças e Serviços</title><style>
+:root {
+  --primary: #2E7D32;
+  --secondary: #4CAF50;
+  --light: #E8F5E9;
+  --dark: #1B5E20;
+  --white: #FFFFFF;
+  --gray: #757575;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+}
+
+header {
+  background: var(--white);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  height: 60px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.main-content {
+  margin-top: 100px;
+  padding: 2rem;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  color: var(--gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.parts-grid,
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem auto;
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
+.part-card, .car-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 450px;
+  padding: 1.5rem;
+  border: 1px solid var(--light);
+  transition: all 0.3s ease;
+}
+
+.part-card:hover, .car-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.part-card .price,
+.car-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+
+.whatsapp-button {
+  margin-top: auto;
+  justify-content: center;
+}
+
+.section-divider {
+  height: 2px;
+  background: var(--light);
+  margin: 4rem auto;
+  max-width: 1200px;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 350px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.chatbot-header {
+  background: var(--primary);
+  color: var(--white);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-messages {
+  height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.chat-input {
+  padding: 1rem;
+  border-top: 1px solid var(--light);
+  display: flex;
+  gap: 0.5rem;
+}
+
+footer {
+  background: var(--dark);
+  color: var(--white);
+  padding: 2rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Responsividade do menu */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--dark);
+    cursor: pointer;
+  }
+
+  .chatbot {
+    width: 90%;
+    right: 5%;
+    bottom: 1rem;
+  }
+
+  .parts-grid,
+  .car-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .part-card,
+  .car-card {
+    min-height: auto;
+  }
+}
+
+.message {
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.message.bot {
+  background: var(--light);
+  margin-right: auto;
+}
+
+.message.user {
+  background: var(--primary);
+  color: var(--white);
+  margin-left: auto;
+}
+
+.chat-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.chat-option {
+  background: var(--light);
+  padding: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chat-option:hover {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.send-button {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--light);
+  border-radius: 4px;
+}
+
+.car-section {
+  margin-top: 4rem;
+  padding: 2rem 0;
+}
+
+.car-grid {
+  margin-top: 2rem;
+}
+
+.car-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+}
+
+.car-image {
+  width: 100%;
+  height: 200px;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-details {
+  padding: 1.5rem;
+}
+
+.chat-opener {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.chat-opener:hover {
+  background: var(--dark);
+}
+
+#close-chat {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#close-chat:hover {
+  opacity: 0.8;
+}
+
+section {
+  padding: 4rem 0;
+  scroll-margin-top: 80px;
+}
+
+.car-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.car-spec {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.part-specs {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.part-spec {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoPartsStore",
+  "name": "Radiadores Morais",
+  "image": "https://radiadoresmorais.github.io/img/social-preview.jpg",
+  "description": "Especialistas em radiadores automotivos, venda de peças e serviços em São José dos Campos. Carros novos e seminovos.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Exemplo, 123",
+    "addressLocality": "São José dos Campos",
+    "addressRegion": "SP",
+    "postalCode": "12000-000",
+    "addressCountry": "BR"
+  },
+  "openingHours": "Mo-Fr 08:00-18:00 Sa 08:00-12:00",
+  "telephone": "+55-12-XXXX-XXXX",
+  "priceRange": "$$"
+}
+</script>
+</head><body>
+
+<header>
+  <nav>
+    <div class="logo-container">
+      <div class="logo">Radiadores Morais</div>
+    </div>
+    <div class="nav-links">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#pecas">Peças</a>
+      <a href="#carros">Carros</a>
+      <a href="#seminovos">Seminovos</a>
+      <a href="#contato">Contato</a>
+      <a href="https://wa.me/5512997821218" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i> Agendar
+      </a>
+    </div>
+    <div class="menu-toggle">☰</div>
+  </nav>
+</header>
+
+<main class="main-content">
+  <section id="inicio">
+    <!-- Content -->
+  </section>
+  
+  <section id="servicos">
+    <!-- Content -->
+  </section>
+
+  <section id="pecas">
+    <div class="section-header">
+      <h2>Peças para Radiadores</h2>
+      <p>Oferecemos peças originais com garantia de qualidade para seu veículo.</p>
+    </div>
+    <div class="parts-grid">
+      <div class="part-card">
+        <div class="part-image">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Radiador Universal</h3>
+        <p>Compatível com diversos modelos. Alta eficiência de resfriamento.</p>
+        <p class="price">R$ 599,90</p>
+        <div class="part-specs">
+          <div class="part-spec">
+            <i class="fas fa-check"></i> Garantia de 1 ano
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-wrench"></i> Instalação inclusa
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-car"></i> Compatibilidade universal
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-certificate"></i> Produto original
+          </div>
+        </div>
+        <button class="whatsapp-button">
+          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+        </button>
+      </div>
+
+      <div class="part-card">
+        <div class="part-image">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <rect x="10" y="20" width="80" height="60" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+            <path d="M20 30 H80 M20 50 H80 M20 70 H80" stroke="#2E7D32" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Radiador Alumínio Premium</h3>
+        <p>Alta performance para carros esportivos. Maior dissipação térmica.</p>
+        <p class="price">R$ 1.299,90</p>
+        <div class="part-specs">
+          <div class="part-spec">
+            <i class="fas fa-check"></i> Garantia de 1 ano
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-wrench"></i> Instalação inclusa
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-car"></i> Compatibilidade universal
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-certificate"></i> Produto original
+          </div>
+        </div>
+        <button class="whatsapp-button" data-product="Radiador Alumínio Premium">
+          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+        </button>
+      </div>
+
+      <div class="part-card">
+        <div class="part-image">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="30" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+            <circle cx="50" cy="50" r="20" fill="none" stroke="#2E7D32" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Tampa de Pressão Universal</h3>
+        <p>Compatível com diversos modelos. Sistema de segurança reforçado.</p>
+        <p class="price">R$ 89,90</p>
+        <div class="part-specs">
+          <div class="part-spec">
+            <i class="fas fa-check"></i> Garantia de 1 ano
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-wrench"></i> Instalação inclusa
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-car"></i> Compatibilidade universal
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-certificate"></i> Produto original
+          </div>
+        </div>
+        <button class="whatsapp-button" data-product="Tampa de Pressão Universal">
+          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+        </button>
+      </div>
+
+      <div class="part-card">
+        <div class="part-image">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Mangueira de Silicone Premium</h3>
+        <p>Resistente a altas temperaturas. Kit completo com abraçadeiras.</p>
+        <p class="price">R$ 159,90</p>
+        <div class="part-specs">
+          <div class="part-spec">
+            <i class="fas fa-check"></i> Garantia de 1 ano
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-wrench"></i> Instalação inclusa
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-car"></i> Compatibilidade universal
+          </div>
+          <div class="part-spec">
+            <i class="fas fa-certificate"></i> Produto original
+          </div>
+        </div>
+        <button class="whatsapp-button" data-product="Mangueira de Silicone Premium">
+          <i class="fab fa-whatsapp"></i> Pedir via WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="carros" class="car-section">
+    <div class="section-header">
+      <h2>Carros Novos</h2>
+      <p>Os melhores veículos zero quilômetro com garantia de fábrica.</p>
+    </div>
+    <div class="car-grid">
+      <div class="car-card">
+        <div class="car-image">
+          <svg width="200" height="120" viewBox="0 0 200 120">
+            <path d="M40,80 L60,80 L70,60 L130,60 L140,80 L160,80 L160,90 L40,90 Z" fill="#2E7D32"/>
+            <circle cx="70" cy="90" r="15" fill="#757575"/>
+            <circle cx="130" cy="90" r="15" fill="#757575"/>
+          </svg>
+        </div>
+        <div class="car-details">
+          <h3>Honda Civic 2024</h3>
+          <p>Touring 2.0 Turbo</p>
+          <div class="car-price">R$ 189.900</div>
+          <div class="car-specs">
+            <span class="car-spec">
+              <i class="fas fa-car"></i> 0km
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-gas-pump"></i> Flex
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-cog"></i> Automático
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-paint-brush"></i> Preto
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-horse"></i> 173 cv
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-car-battery"></i> Garantia 3 anos
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-shield-alt"></i> IPVA 2024
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-star"></i> 0km
+            </span>
+          </div>
+          <button class="whatsapp-button" data-product="Honda Civic 2024 Touring">
+            <i class="fab fa-whatsapp"></i> Mais informações
+          </button>
+        </div>
+      </div>
+      
+      <!-- Similar cards for other new cars -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="seminovos" class="car-section">
+    <div class="section-header">
+      <h2>Carros Seminovos</h2>
+      <p>Veículos seminovos revisados e com garantia.</p>
+    </div>
+    
+    <div class="car-grid">
+      <div class="car-card">
+        <div class="car-image">
+          <svg width="200" height="120" viewBox="0 0 200 120">
+            <path d="M40,80 L60,80 L70,60 L130,60 L140,80 L160,80 L160,90 L40,90 Z" fill="#4CAF50"/>
+            <circle cx="70" cy="90" r="15" fill="#757575"/>
+            <circle cx="130" cy="90" r="15" fill="#757575"/>
+          </svg>
+        </div>
+        <div class="car-details">
+          <h3>Toyota Corolla 2022</h3>
+          <p>XEi 2.0 Flex</p>
+          <div class="car-price">R$ 129.900</div>
+          <div class="car-specs">
+            <span class="car-spec">
+              <i class="fas fa-road"></i> 35.000 km
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-gas-pump"></i> Flex
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-cog"></i> Automático
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-paint-brush"></i> Prata
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-horse"></i> 147 cv
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-car-battery"></i> Garantia 3 anos
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-shield-alt"></i> IPVA 2023
+            </span>
+            <span class="car-spec">
+              <i class="fas fa-star"></i> 35.000 km
+            </span>
+          </div>
+          <button class="whatsapp-button" data-product="Toyota Corolla 2022 XEi">
+            <i class="fab fa-whatsapp"></i> Mais informações
+          </button>
+        </div>
+      </div>
+      
+      <!-- Similar cards for other used cars -->
+    </div>
+  </section>
+
+  <div class="chatbot">
+    <div class="chatbot-header">
+      <h3>Assistente Virtual</h3>
+      <button id="close-chat">×</button>
+    </div>
+    <div class="chat-messages">
+      <div class="message bot">
+        Olá! Bem-vindo à Radiadores Morais. Como posso ajudar?
+      </div>
+      <!-- Mensagens do chat aparecerão aqui -->
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Digite sua mensagem...">
+      <button class="send-button">Enviar</button>
+    </div>
+  </div>
+  <button class="chat-opener">
+    <i class="fas fa-comments"></i> Assistente Virtual
+  </button>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="contact-info">
+      <h3>Contato</h3>
+      <p>Tel: (12) 99782-1218</p>
+      <p>Email: contato@radiadoresmorais.com</p>
+    </div>
+    <div class="address">
+      <h3>Endereço</h3>
+      <p>Rua Exemplo, 123 - São José dos Campos, SP</p>
+      <p>Segunda a Sexta: 8h às 18h</p>
+      <p>Sábado: 8h às 12h</p>
+    </div>
+    <div class="legal">
+      <h3>Legal</h3>
+      <a href="/privacidade">Política de Privacidade</a>
+      <a href="/termos">Termos de Serviço</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const chatbot = {
+    currentState: 'initial',
+    conversation: {},
+    
+    responses: {
+      initial: {
+        message: 'Olá! Bem-vindo à Radiadores Morais. Como posso ajudar?',
+        options: [
+          {text: 'Solicitar orçamento', next: 'orcamento'},
+          {text: 'Informações sobre peças', next: 'pecas'},
+          {text: 'Agendar serviço', next: 'servico'},
+          {text: 'Informações sobre carros', next: 'carros'},
+          {text: 'Outras dúvidas', next: 'duvidas'}
+        ]
+      },
+      orcamento: {
+        message: 'Para qual veículo você precisa do orçamento?',
+        input: true,
+        next: 'tipo_servico'
+      },
+      tipo_servico: {
+        message: 'Qual serviço você precisa?',
+        options: [
+          {text: 'Limpeza de radiador', next: 'finalizar'},
+          {text: 'Troca de radiador', next: 'finalizar'},
+          {text: 'Reparo de vazamento', next: 'finalizar'},
+          {text: 'Outro serviço', next: 'finalizar'}
+        ]
+      },
+      pecas: {
+        message: 'Qual peça você procura?',
+        options: [
+          {text: 'Radiador completo', next: 'modelo_peca'},
+          {text: 'Tampa de pressão', next: 'modelo_peca'},
+          {text: 'Mangueiras', next: 'modelo_peca'},
+          {text: 'Outras peças', next: 'modelo_peca'}
+        ]
+      },
+      carros: {
+        message: 'Qual tipo de carro você procura?',
+        options: [
+          {text: 'Carros Novos', next: 'carros_novos'},
+          {text: 'Seminovos', next: 'carros_seminovos'},
+        ]
+      },
+      carros_novos: {
+        message: 'Qual modelo te interessa?',
+        options: [
+          {text: 'Honda Civic', next: 'finalizar'},
+          {text: 'Toyota Corolla', next: 'finalizar'},
+          {text: 'Outros modelos', next: 'finalizar'}
+        ]
+      },
+      carros_seminovos: {
+        message: 'Qual faixa de preço você procura?',
+        options: [
+          {text: 'Até R$ 80.000', next: 'finalizar'},
+          {text: 'R$ 80.000 a R$ 120.000', next: 'finalizar'},
+          {text: 'Acima de R$ 120.000', next: 'finalizar'}
+        ]
+      },
+      finalizar: {
+        message: 'Ótimo! Vou te conectar com um de nossos especialistas. Por favor, informe seu nome:',
+        input: true,
+        next: 'contato'
+      },
+      contato: {
+        message: 'Agora preciso de seu telefone para contato:',
+        input: true,
+        next: 'confirmar'
+      },
+      confirmar: {
+        message: 'Obrigado! Clique abaixo para finalizar seu atendimento no WhatsApp:',
+        options: [
+          {text: 'Finalizar no WhatsApp', next: 'whatsapp'},
+          {text: 'Nova consulta', next: 'initial'},
+          {text: 'Encerrar', next: 'encerrar'}
+        ]
+      },
+      whatsapp: {
+        message: 'Redirecionando para o WhatsApp...',
+        action: function(conversation) {
+          const message = encodeURIComponent(
+            `Olá! Vim pelo chat do site.\n` +
+            `Nome: ${conversation.finalizar}\n` +
+            `Telefone: ${conversation.contato}\n` +
+            `Assunto: ${conversation.tipo_servico || conversation.pecas || conversation.carros}`
+          );
+          window.open(`https://wa.me/5512997821218?text=${message}`, '_blank');
+          return 'encerrar';
+        }
+      },
+      modelo_peca: {
+        message: 'Para qual modelo de veículo você precisa?',
+        input: true,
+        next: 'finalizar'
+      },
+      servico: {
+        message: 'Qual o melhor dia para seu agendamento?',
+        options: [
+          {text: 'Próximos 2 dias', next: 'horario'},
+          {text: 'Esta semana', next: 'horario'},
+          {text: 'Próxima semana', next: 'horario'}
+        ]
+      },
+      horario: {
+        message: 'Qual o melhor horário?',
+        options: [
+          {text: 'Manhã (8h-12h)', next: 'finalizar'},
+          {text: 'Tarde (13h-18h)', next: 'finalizar'}
+        ]
+      }
+    },
+
+    init() {
+      this.chatMessages = document.querySelector('.chat-messages');
+      this.chatInput = document.querySelector('.chat-input input');
+      this.sendButton = document.querySelector('.send-button');
+      
+      this.sendButton.addEventListener('click', () => this.handleInput());
+      this.chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') this.handleInput();
+      });
+      
+      this.showState('initial');
+    },
+
+    showState(state) {
+      const stateData = this.responses[state];
+      if (!stateData) return;
+
+      this.addMessage(stateData.message, true);
+      
+      if (stateData.options) {
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'chat-options';
+        
+        stateData.options.forEach(option => {
+          const button = document.createElement('button');
+          button.className = 'chat-option';
+          button.textContent = option.text;
+          button.addEventListener('click', () => {
+            this.addMessage(option.text);
+            this.currentState = option.next;
+            this.showState(option.next);
+          });
+          optionsDiv.appendChild(button);
+        });
+        
+        this.chatMessages.appendChild(optionsDiv);
+      }
+    },
+
+    addMessage(message, isBot = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
+      messageDiv.textContent = message;
+      this.chatMessages.appendChild(messageDiv);
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+    },
+
+    handleInput() {
+      const message = this.chatInput.value.trim();
+      if (!message) return;
+
+      this.addMessage(message);
+      this.chatInput.value = '';
+      
+      const currentStateData = this.responses[this.currentState];
+      if (currentStateData && currentStateData.next) {
+        this.conversation[this.currentState] = message;
+        if (currentStateData.action) {
+          const nextState = currentStateData.action(this.conversation);
+          this.currentState = nextState;
+        } else {
+          this.currentState = currentStateData.next;
+          this.showState(this.currentState);
+        }
+      }
+    }
+  };
+
+  // Inicializar chatbot
+  chatbot.init();
+
+  const closeChat = document.getElementById('close-chat');
+  const chatbotElement = document.querySelector('.chatbot');
+  const chatOpener = document.querySelector('.chat-opener');
+
+  // Ensure initial state
+  chatbotElement.style.display = 'none';
+  chatOpener.style.display = 'block';
+
+  // Update event listeners
+  closeChat.addEventListener('click', () => {
+    chatbotElement.style.display = 'none';
+    chatOpener.style.display = 'block';
+  });
+
+  chatOpener.addEventListener('click', () => {
+    chatbotElement.style.display = 'block';
+    chatOpener.style.display = 'none';
+  });
+
+  // Implementação dos botões de WhatsApp
+  document.querySelectorAll('.whatsapp-button').forEach(button => {
+    button.addEventListener('click', function() {
+      const product = this.dataset.product || '';
+      const message = encodeURIComponent(`Olá! Gostaria de informações sobre: ${product}`);
+      window.open(`https://wa.me/5512997821218?text=${message}`, '_blank');
+    });
+  });
+
+  // Smooth scroll behavior
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Fix mobile navigation toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+      navLinks.classList.remove('active');
+      menuToggle.textContent = '☰';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
